@@ -1,0 +1,43 @@
+Fashion Project Logging Started...
+========================================
+Libraries loaded successfully.
+
+Loading Data (1 Million rows)... Please wait.
+indexing transactions_train.csv [--------------------------] 2.15GB/s, eta:  0sindexing transactions_train.csv [=-----------------------] 429.88MB/s, eta:  8sindexing transactions_train.csv [==========================] 2.15GB/s, eta:  0s                                                                                                                                                              indexing articles.csv [======------------------------------] 2.15GB/s, eta:  0sindexing articles.csv [==================================] 920.45MB/s, eta:  0s                                                                               Datasets loaded successfully!
+
+Cleaning and Merging Data...
+Data cleaned. Total Days Analyzed: 22 
+
+Generating Graph 1 (Slide 4)...
+Saved: Slide4_Heartbeat.png
+Generating Graph 2 (Slide 5)...
+Top Categories Found: Garment Upper body, Garment Lower body, Garment Full body 
+Saved: Slide5_Material.png
+
+Training Random Forest Model...
+Model Trained Successfully.
+
+Call:
+ randomForest(formula = total_sales ~ month + lag_1_day, data = train_data,      ntree = 100) 
+               Type of random forest: regression
+                     Number of trees: 100
+No. of variables tried at each split: 1
+
+          Mean of squared residuals: 184952805
+                    % Var explained: -9.54
+
+=== MODEL METRICS ===
+RMSE (Root Mean Squared Error): 14107.08 
+Note: A high RMSE is expected due to high daily volume (up to 60k).
+Generating Graph 3 (Slide 8)...
+Saved: Slide8_Prediction.png
+
+========================================
+=== KEY BUSINESS INSIGHTS (The 'So What?') ===
+1. DYNAMIC REPLENISHMENT: Switch to daily/weekly ordering based on 'Lag' data.
+2. MATERIAL STRATEGY: Stock Knitwear conservatively; buy Denim in bulk.
+3. CLEARANCE TIMING: Launch sales exactly when the trend line dips (Mid-October).
+========================================
+
+SUCCESS! Script Finished.
+Check your folder for: project_output.txt and the 3 PNG images.
