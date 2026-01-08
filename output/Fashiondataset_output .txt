@@ -1,0 +1,63 @@
+# 1. Load Libraries
+> library(tidyverse)
+> 
+> # 2. Read just the first 1000 rows (Fast & Easy)
+> transactions <- read_csv("transactions_train.csv", n_max = 50)
+Rows: 50 Columns: 5                                                            
+── Column specification ───────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): customer_id, article_id
+dbl  (2): price, sales_channel_id
+date (1): t_dat
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+> articles <- read_csv("articles.csv", n_max = 50)
+Rows: 50 Columns: 25                                                           
+── Column specification ───────────────────────────────────────────────────────
+Delimiter: ","
+chr (17): article_id, product_code, prod_name, product_type_name, product_g...
+dbl  (8): product_type_no, graphical_appearance_no, perceived_colour_value_...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+> 
+> # 3. Display the "Transactions" Data (Sales History)
+> print("=== TRANSACTIONS DATA (First 10 Rows) ===")
+[1] "=== TRANSACTIONS DATA (First 10 Rows) ==="
+> head(transactions, 10)
+# A tibble: 10 × 5
+   t_dat      customer_id                    article_id  price sales_channel_id
+   <date>     <chr>                          <chr>       <dbl>            <dbl>
+ 1 2018-09-20 000058a12d5b43e67d225668fa1f8… 0663713001 0.0508                2
+ 2 2018-09-20 000058a12d5b43e67d225668fa1f8… 0541518023 0.0305                2
+ 3 2018-09-20 00007d2de826758b65a93dd24ce62… 0505221004 0.0152                2
+ 4 2018-09-20 00007d2de826758b65a93dd24ce62… 0685687003 0.0169                2
+ 5 2018-09-20 00007d2de826758b65a93dd24ce62… 0685687004 0.0169                2
+ 6 2018-09-20 00007d2de826758b65a93dd24ce62… 0685687001 0.0169                2
+ 7 2018-09-20 00007d2de826758b65a93dd24ce62… 0505221001 0.0203                2
+ 8 2018-09-20 00083cda041544b2fbb0e0d2905ad… 0688873012 0.0305                1
+ 9 2018-09-20 00083cda041544b2fbb0e0d2905ad… 0501323011 0.0534                1
+10 2018-09-20 00083cda041544b2fbb0e0d2905ad… 0598859003 0.0457                2
+> 
+> # 4. Display the "Articles" Data (Product Details)
+> print("=== ARTICLES DATA (Product Details) ===")
+[1] "=== ARTICLES DATA (Product Details) ==="
+> head(articles %>% select(article_id, product_group_name, colour_group_name), 10)
+# A tibble: 10 × 3
+   article_id product_group_name colour_group_name
+   <chr>      <chr>              <chr>            
+ 1 0108775015 Garment Upper body Black            
+ 2 0108775044 Garment Upper body White            
+ 3 0108775051 Garment Upper body Off White        
+ 4 0110065001 Underwear          Black            
+ 5 0110065002 Underwear          White            
+ 6 0110065011 Underwear          Light Beige      
+ 7 0111565001 Socks & Tights     Black            
+ 8 0111565003 Socks & Tights     Beige            
+ 9 0111586001 Garment Lower body Black            
+10 0111593001 Socks & Tights     Black            
+> 
+> # 5. View in a nice table (Opens a new tab in RStudio)
+> View(transactions)
+> 
